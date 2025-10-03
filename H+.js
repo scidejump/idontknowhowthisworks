@@ -8,7 +8,7 @@ var id = "aaa";
 var name = "acidic Theory";
 var description = "dont copyright strike me pls i am tryne figure out how this works. literally idk what i am doing";
 var authors = "playsprout, scbose";
-var version = 0.1;
+var version = 0.10001;
 
 var currency;
 var tai, rao, C;
