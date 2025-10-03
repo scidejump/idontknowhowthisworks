@@ -6,9 +6,9 @@ import { Utils } from "./api/Utils";
 
 var id = "aaa";
 var name = "acidic Theory";
-var description = "dont copyright strike me pls";
-var authors = "scbose, playsprout";
-var version = 1;
+var description = "dont copyright strike me pls i am tryne figure out how this works";
+var authors = "playsprout, scbose";
+var version = 0;
 
 var currency;
 var tai, rao, C;
