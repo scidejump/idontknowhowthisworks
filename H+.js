@@ -6,7 +6,7 @@ import { Utils } from "./api/Utils";
 
 var id = "aaa";
 var name = "acidic Theory";
-var description = "dont copyright strike me pls i am tryne figure out how this works";
+var description = "dont copyright strike me pls i am tryne figure out how this works. literally idk what i am doing";
 var authors = "playsprout, scbose";
 var version = 0.1;
 
@@ -243,7 +243,7 @@ var getPrimaryEquation = () => {
     if (c2Exp.level == 3) result += "^{1.231}";
 
     if (theory.tau <= BigNumber.from("1e300"))
-        result+="+(\\frac{\\int_{0}^{tai*(e^{\\pi  i}+1)} x^{0.01C}dx}{\\frac{d}{dx}(1.71C^{1.7x}|x=rao)})"
+        result+="+(\\frac{[H+]K_aK_b}{(10^{-\\text{lg}(14-pOH)})K_w})"
     else {
         result+="(tay)^"
         
