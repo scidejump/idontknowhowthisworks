@@ -4,28 +4,28 @@ import { BigNumber } from "./api/BigNumber";
 import { theory } from "./api/Theory";
 import { Utils } from "./api/Utils";
 
-var id = "aaa";
-var name = "acidic Theory";
+var id = "aab";
+var name = "alr time to actually do something";
 var description = "dont copyright strike me pls i am tryne figure out how this works. literally idk what i am doing";
-var authors = "playsprout, scbose";
-var version = 0.10001;
+var authors = "mostly scbose";
+var version = 0.10010;
 
 var currency;
-var tai, rao, C;
-var c1Exp, c2Exp;
+var c1, c2, c3, c4, c5;
+var c1Exp, c2Exp, c3Exp, c4Exp, randomthing;
 theory.primaryEquationHeight=100;
 //Custom cost (this was a frustration)
 var myCustomCost = (level) => {
 var cost;
 var cat2;
 switch(level) {
-case 0: {cost=BigNumber.from("8e0");break}
-case 1: {cost=BigNumber.from("1.6e1");break}
-case 2: {cost=BigNumber.from("2.4e1");break}
+case 0: {cost=BigNumber.from("1e1");break}
+case 1: {cost=BigNumber.from("2e1");break}
+case 2: {cost=BigNumber.from("3e1");break}
 case 3: {cost=BigNumber.from("4e1");break}
-case 4: {cost=BigNumber.from("6e1");break}
-case 5: {cost=BigNumber.from("1e2");break}
-case 6: {cost=BigNumber.from("3e2");break}
+case 4: {cost=BigNumber.from("5e1");break}
+case 5: {cost=BigNumber.from("6e1");break}
+case 6: {cost=BigNumber.from("7e1");break}
 case 7: {cost=BigNumber.from("3.4e2");break}
 case 8: {cost=BigNumber.from("3.8e2");break}
 case 9: {cost=BigNumber.from("4.2e2");break}
@@ -64,37 +64,51 @@ var init = () => {
 
     // c1
     {
-        let getDesc = (level) => "tai=" + getC1(level).toString(0);
-        tai = theory.createUpgrade(0, currency, new FirstFreeCost(new ExponentialCost(15, Math.log2(2))));
-        tai.getDescription = (_) => Utils.getMath(getDesc(tai.level));
-        tai.getInfo = (amount) => Utils.getMathTo(getDesc(tai.level), getDesc(tai.level + amount));
+        let getDesc = (level) => "c1=" + getC1(level).toString(0);
+        c1 = theory.createUpgrade(0, currency, new FirstFreeCost(new ExponentialCost(10, Math.log2(2))));
+        c1.getDescription = (_) => Utils.getMath(getDesc(c1.level));
+        c1.getInfo = (amount) => Utils.getMathTo(getDesc(c1.level), getDesc(c1.level + amount));
     }
 
     // c2
     {
-        let getDesc = (level) => "rao=2^{" + level + "}";
-        let getInfo = (level) => "rao=" + getC2(level).toString(0);
-        rao = theory.createUpgrade(1, currency, new ExponentialCost(5, Math.log2(5)));
-        rao.getDescription = (_) => Utils.getMath(getDesc(rao.level));
-        rao.getInfo = (amount) => Utils.getMathTo(getInfo(rao.level), getInfo(rao.level + amount));
+        let getDesc = (level) => "c2=2^{" + level + "}";
+        let getInfo = (level) => "c2=" + getC2(level).toString(0);
+        c2 = theory.createUpgrade(1, currency, new ExponentialCost(100, Math.log2(8)));
+        c2.getDescription = (_) => Utils.getMath(getDesc(c2.level));
+        c2.getInfo = (amount) => Utils.getMathTo(getInfo(c2.level), getInfo(c2.level + amount));
     }
     // c3
     {
-        if (1 == 1) {
-            let getDesc = (level) => "C=10^{" + level + "}";
-            let getInfo = (level) => "C=" + getC3(level).toString(0);
-            C = theory.createUpgrade(2, currency, new ExponentialCost(BigNumber.from("1e10"), 10));
-            C.getDescription = (_) => Utils.getMath(getDesc(C.level));
-            C.getInfo = (amount) => Utils.getMathTo(getInfo(C.level), getInfo(C.level + amount));
-        }
+        let getDesc = (level) => "c3=3^{" + level + "}";
+        let getInfo = (level) => "c3=" + getC3(level).toString(0);
+        c3 = theory.createUpgrade(2, currency, new ExponentialCost(BigNumber.from("1e5"), Math.log2(16)));
+        c3.getDescription = (_) => Utils.getMath(getDesc(c3.level));
+        c3.getInfo = (amount) => Utils.getMathTo(getInfo(c3.level), getInfo(c3.level + amount));
 
+    }
+    //c4
+    {
+        let getDesc = (level) => "c4=4^{" + level + "}";
+        let getInfo = (level) => "c4=" + getC4(level).toString(0);
+        c4 = theory.createUpgrade(3, currency, new ExponentialCoat(BigNumber.from("1e8"), Math.log2(32)));
+        c4.getDescription = (_) => Utils.getMath(getDesc(c4.level));
+        c4.getInfo = (amount) => Utils.getMathTo(getInfo(c4.level), getInfo(c4.level + amount));
+    }
+    //c5
+    {
+        let getDesc = (level) => "c5=" + getC5(level).toString(0);
+        let getInfo = (level) => "c5=" + getC5(level).toString(0);
+        c5 = theory.createUpgrade(4, currency, new ExponentialCoat(BigNumber.from("1e11"), Math.log2(64)));
+        c5.getDescription = (_) => Utils.getMath(getDesc(c5.level));
+        c5.getInfo = (amount) => Utils.getMathTo(getInfo(c5.level), getInfo(c5.level + amount));
     }
 
     /////////////////////
     // Permanent Upgrades
-    theory.createPublicationUpgrade(0, currency, 1e6);
+    theory.createPublicationUpgrade(0, currency, 1e8);
     theory.createBuyAllUpgrade(1, currency, 1e8);
-    theory.createAutoBuyerUpgrade(2, currency, 1e6);
+    theory.createAutoBuyerUpgrade(2, currency, 1e8);
 
     ///////////////////////
     //// Milestone Upgrades
