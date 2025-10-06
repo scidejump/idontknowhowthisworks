@@ -5,7 +5,7 @@ import { theory } from "./api/Theory";
 import { Utils } from "./api/Utils";
 
 var id = "aaf";
-var name = "acidic Theory v0.101";
+var name = "acidic Theory v0.10115";
 var description = "just borrowing some code from basic theory i sure hope this works";
 var authors = "playsprout, scbose";
 var version = 0.10115;
