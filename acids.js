@@ -267,7 +267,7 @@ var getPrimaryEquation = () => {
     return result;
 }
 
-var getSecondaryEquation = () => theory.latexSymbol + "=\\max\\rho^{0.4}" + ",\\quad" + acids[c1Exp.level] + Ka[c1Exp.level];
+var getSecondaryEquation = () => theory.latexSymbol + "=\\max\\rho^{0.4}";
 var getPublicationMultiplier = (tau) => tau.pow(0.4);
 var getPublicationMultiplierFormula = (symbol) => symbol + "^{0.4}";
 var getTau = () => currency.value.pow(0.4);
