@@ -4,11 +4,11 @@ import { BigNumber } from "./api/BigNumber";
 import { theory } from "./api/Theory";
 import { Utils } from "./api/Utils";
 
-var id = "aae";
+var id = "aaf";
 var name = "acidic Theory v0.101";
 var description = "just borrowing some code from basic theory i sure hope this works";
 var authors = "playsprout, scbose";
-var version = 0.10111;
+var version = 0.10112;
 
 //acid
 var acids=["H2O", "PhOH", "HClO", "H2CO3", "AcOH", "HF", "H3PO4", "H3O+"]
@@ -107,7 +107,7 @@ var init = () => {
     {
         c1Exp = theory.createMilestoneUpgrade(0, 7);
         c1Exp.description = "upgrade acid";
-        c1Exp.getInfo = () => "change " + acids[c1Exp.level] + "to " + acids[c1Exp.level+1];
+        c1Exp.getInfo = () => "change " + acids[c1Exp.level] + " to " + acids[c1Exp.level+1];
         c1Exp.boughtOrRefunded = (_) => theory.invalidatePrimaryEquation();
     }
 
