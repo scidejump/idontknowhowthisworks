@@ -8,10 +8,11 @@ var id = "aaf";
 var name = "acidic Theory v0.101";
 var description = "just borrowing some code from basic theory i sure hope this works";
 var authors = "playsprout, scbose";
-var version = 0.10112;
+var version = 0.10114;
 
 //acid
-var acids=["H2O", "PhOH", "HClO", "H2CO3", "AcOH", "HF", "H3PO4", "H3O+"]
+var acids = ["H2O", "PhOH", "HClO", "H2CO3", "AcOH", "HF", "H3PO4", "H3O+"]
+var Ka = [BigNumber.ONE, BigNumber.from("1.6e4"), BigNumber.from("3.25e6"), BigNumber.from("4.3e7"), BigNumber.from("1.76e9"), BigNumber.from("7.2e10"), BigNumber.from("7.52e11"), BigNumber.from("1e14")]
 
 var currency;
 var tai, rao, C;
