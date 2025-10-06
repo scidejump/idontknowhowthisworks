@@ -4,7 +4,7 @@ import { BigNumber } from "./api/BigNumber";
 import { theory } from "./api/Theory";
 import { Utils } from "./api/Utils";
 
-var id = "aac";
+var id = "aad";
 var name = "acidic Theory v0.101";
 var description = "just borrowing some code from basic theory i sure hope this works";
 var authors = "playsprout, scbose";
