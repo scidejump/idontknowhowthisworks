@@ -8,7 +8,7 @@ var id = "aac";
 var name = "acidic Theory v0.101";
 var description = "just borrowing some code from basic theory i sure hope this works";
 var authors = "playsprout, scbose";
-var version = 0.101;
+var version = 0.1011;
 
 //acid
 var acids=["H2O", "PhOH", "HClO", "H2CO3", "AcOH", "HF", "H3PO4", "H3O+"]
