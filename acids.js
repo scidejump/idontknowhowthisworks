@@ -107,7 +107,7 @@ var init = () => {
     {
         c1Exp = theory.createMilestoneUpgrade(0, 7);
         c1Exp.description = "upgrade acid";
-        c1Exp.getInfo = () => "change " + acids[int(c1Exp.level)] + "to " + acids[int(c1Exp.level)+1];
+        c1Exp.getInfo = () => "change " + acids[c1Exp.level] + "to " + acids[c1Exp.level+1];
         c1Exp.boughtOrRefunded = (_) => theory.invalidatePrimaryEquation();
     }
 
