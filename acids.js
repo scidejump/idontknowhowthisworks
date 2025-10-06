@@ -22,11 +22,12 @@ var myCustomCost = (level) => {
 var cost;
 var cat2;
 switch(level) {
-case 0: {cost=BigNumber.from("8e0");break}
-case 1: {cost=BigNumber.from("1.6e1");break}
-case 2: {cost=BigNumber.from("2.4e1");break}
-case 3: {cost=BigNumber.from("4e1");break}
-case 4: {cost=BigNumber.from("6e1");break}
+        //test values, original: 8, 16, 24, 40, 60, 100, 300, 340, 380, 420, 460, 500, 580
+case 0: {cost=BigNumber.from("2e0");break}
+case 1: {cost=BigNumber.from("3e0");break}
+case 2: {cost=BigNumber.from("4e0");break}
+case 3: {cost=BigNumber.from("5e0");break}
+case 4: {cost=BigNumber.from("6e0");break}
 case 5: {cost=BigNumber.from("1e2");break}
 case 6: {cost=BigNumber.from("3e2");break}
 case 7: {cost=BigNumber.from("3.4e2");break}
