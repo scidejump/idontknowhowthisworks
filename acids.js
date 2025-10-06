@@ -4,11 +4,11 @@ import { BigNumber } from "./api/BigNumber";
 import { theory } from "./api/Theory";
 import { Utils } from "./api/Utils";
 
-var id = "aad";
+var id = "aae";
 var name = "acidic Theory v0.101";
 var description = "just borrowing some code from basic theory i sure hope this works";
 var authors = "playsprout, scbose";
-var version = 0.1011;
+var version = 0.10111;
 
 //acid
 var acids=["H2O", "PhOH", "HClO", "H2CO3", "AcOH", "HF", "H3PO4", "H3O+"]
@@ -76,8 +76,8 @@ var init = () => {
 
     // c2
     {
-        let getDesc = (level) => "steal electron pair: 2^{" + level + "}";
-        let getInfo = (level) => "stolen pairs=" + getC2(level).toString(0);
+        let getDesc = (level) => "\\text{steal electron pair}: 2^{" + level + "}";
+        let getInfo = (level) => "\\text{stolen pairs}=" + getC2(level).toString(0);
         rao = theory.createUpgrade(1, currency, new ExponentialCost(5, Math.log2(5)));
         rao.getDescription = (_) => Utils.getMath(getDesc(rao.level));
         rao.getInfo = (amount) => Utils.getMathTo(getInfo(rao.level), getInfo(rao.level + amount));
