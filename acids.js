@@ -12,7 +12,7 @@ var version = 0.10115;
 
 //acid
 var acids = ["H2O", "PhOH", "HClO", "H2CO3", "AcOH", "HF", "H3PO4", "H3O+"]
-var Ka = [BigNumber.ONE, BigNumber.from("1.6e4"), BigNumber.from("3.25e6"), BigNumber.from("4.3e7"), BigNumber.from("1.76e9"), BigNumber.from("7.2e10"), BigNumber.from("7.52e11"), BigNumber.from("1e14")]
+var Ka = ["1e0", "1.6e4", "3.25e6", "4.3e7", "1.76e9", "7.2e10", "7.52e11", "1e14"]
 
 var currency;
 var tai, rao, C;
@@ -267,7 +267,7 @@ var getPrimaryEquation = () => {
     return result;
 }
 
-var getSecondaryEquation = () => theory.latexSymbol + "=\\max\\rho^{0.4}" + "\\quad" + acids[c1Exp.level] + Ka[c1Exp.level];
+var getSecondaryEquation = () => theory.latexSymbol + "=\\max\\rho^{0.4}" + ",\\quad" + acids[c1Exp.level] + Ka[c1Exp.level];
 var getPublicationMultiplier = (tau) => tau.pow(0.4);
 var getPublicationMultiplierFormula = (symbol) => symbol + "^{0.4}";
 var getTau = () => currency.value.pow(0.4);
