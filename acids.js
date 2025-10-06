@@ -8,7 +8,7 @@ var id = "aaf";
 var name = "acidic Theory v0.101";
 var description = "just borrowing some code from basic theory i sure hope this works";
 var authors = "playsprout, scbose";
-var version = 0.10114;
+var version = 0.10115;
 
 //acid
 var acids = ["H2O", "PhOH", "HClO", "H2CO3", "AcOH", "HF", "H3PO4", "H3O+"]
@@ -216,8 +216,8 @@ var tick = (elapsedTime, multiplier) => {
     let dt = BigNumber.from(elapsedTime * multiplier);
     let bonus = theory.publicationMultiplier;
     if (m5.level == 0) {
-        currency.value += dt * bonus * getC1(tai.level).pow(getC1Exponent(c1Exp.level)) *
-                                   getC2(rao.level).pow(getC2Exponent(c2Exp.level)) * getC3(C.level).pow(getM4Exponent(m4Exp.level));
+        currency.value += dt * bonus * getC1(tai.level).pow(getC1Exponent(c1Exp.level)) * 
+                                   getC2(rao.level).pow(getC2Exponent(c2Exp.level)) * getC3(C.level).pow(getM4Exponent(m4Exp.level);
     }
     else {
         currency.value += dt * bonus * getC1(tai.level).pow(getC1Exponent(c1Exp.level)) *
@@ -267,7 +267,7 @@ var getPrimaryEquation = () => {
     return result;
 }
 
-var getSecondaryEquation = () => theory.latexSymbol + "=\\max\\rho^{0.4}";
+var getSecondaryEquation = () => theory.latexSymbol + "=\\max\\rho^{0.4}" + "\\quad" + acids[c1Exp.level] + Ka[c1Exp.level];
 var getPublicationMultiplier = (tau) => tau.pow(0.4);
 var getPublicationMultiplierFormula = (symbol) => symbol + "^{0.4}";
 var getTau = () => currency.value.pow(0.4);
