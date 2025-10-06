@@ -4,11 +4,14 @@ import { BigNumber } from "./api/BigNumber";
 import { theory } from "./api/Theory";
 import { Utils } from "./api/Utils";
 
-var id = "aaa";
-var name = "acidic Theory";
-var description = "dont copyright strike me pls i am tryne figure out how this works. literally idk what i am doing";
+var id = "aac";
+var name = "acidic Theory v0.101";
+var description = "just borrowing some code from basic theory i sure hope this works";
 var authors = "playsprout, scbose";
-var version = 0.10001;
+var version = 0.101;
+
+//acid
+var acids=["H2O", "PhOH", "HClO", "H2CO3", "AcOH", "HF", "H3PO4", "H3O+"]
 
 var currency;
 var tai, rao, C;
@@ -64,7 +67,7 @@ var init = () => {
 
     // c1
     {
-        let getDesc = (level) => "tai=" + getC1(level).toString(0);
+        let getDesc = (level) => "H+=" + getC1(level).toString(0);
         tai = theory.createUpgrade(0, currency, new FirstFreeCost(new ExponentialCost(15, Math.log2(2))));
         tai.getDescription = (_) => Utils.getMath(getDesc(tai.level));
         tai.getInfo = (amount) => Utils.getMathTo(getDesc(tai.level), getDesc(tai.level + amount));
@@ -72,8 +75,8 @@ var init = () => {
 
     // c2
     {
-        let getDesc = (level) => "rao=2^{" + level + "}";
-        let getInfo = (level) => "rao=" + getC2(level).toString(0);
+        let getDesc = (level) => "steal electron pair: 2^{" + level + "}";
+        let getInfo = (level) => "stolen pairs=" + getC2(level).toString(0);
         rao = theory.createUpgrade(1, currency, new ExponentialCost(5, Math.log2(5)));
         rao.getDescription = (_) => Utils.getMath(getDesc(rao.level));
         rao.getInfo = (amount) => Utils.getMathTo(getInfo(rao.level), getInfo(rao.level + amount));
@@ -81,8 +84,8 @@ var init = () => {
     // c3
     {
         if (1 == 1) {
-            let getDesc = (level) => "C=10^{" + level + "}";
-            let getInfo = (level) => "C=" + getC3(level).toString(0);
+            let getDesc = (level) => "OH-=10^{" + level + "}";
+            let getInfo = (level) => "OH-=" + getC3(level).toString(0);
             C = theory.createUpgrade(2, currency, new ExponentialCost(BigNumber.from("1e10"), 10));
             C.getDescription = (_) => Utils.getMath(getDesc(C.level));
             C.getInfo = (amount) => Utils.getMathTo(getInfo(C.level), getInfo(C.level + amount));
@@ -101,9 +104,9 @@ var init = () => {
     theory.setMilestoneCost(new CustomCost(myCustomCost));
 
     {
-        c1Exp = theory.createMilestoneUpgrade(0, 3);
-        c1Exp.description = Localization.getUpgradeIncCustomExpDesc("tai", "0.08");
-        c1Exp.info = Localization.getUpgradeIncCustomExpInfo("tai", "0.08");
+        c1Exp = theory.createMilestoneUpgrade(0, 7);
+        c1Exp.description = "upgrade acid";
+        c1Exp.info = "change " + acids[int(c1Exp.level)] + "to " + acids[int(c1Exp.level)+1];
         c1Exp.boughtOrRefunded = (_) => theory.invalidatePrimaryEquation();
     }
 
