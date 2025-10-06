@@ -6,9 +6,9 @@ import { Utils } from "./api/Utils";
 
 var id = "aaf";
 var name = "acidic Theory v0.101";
-var description = "v0.10112 just borrowing some code from basic theory i sure hope this works";
+var description = "v0.10113 just borrowing some code from basic theory i sure hope this works";
 var authors = "playsprout, scbose";
-var version = 0.10112;
+var version = 0.10113;
 
 //acid
 var acids=["H2O", "PhOH", "HClO", "H2CO3", "AcOH", "HF", "H3PO4", "H3O+"];
@@ -23,12 +23,12 @@ var cost;
 var cat2;
 switch(level) {
         //test values, original: 8, 16, 24, 40, 60, 100, 300, 340, 380, 420, 460, 500, 580
-case 0: {cost=BigNumber.from("2e0");break}
-case 1: {cost=BigNumber.from("3e0");break}
-case 2: {cost=BigNumber.from("4e0");break}
-case 3: {cost=BigNumber.from("5e0");break}
-case 4: {cost=BigNumber.from("6e0");break}
-case 5: {cost=BigNumber.from("1e2");break}
+case 0: {cost=BigNumber.from("1e0");break}
+case 1: {cost=BigNumber.from("1.1e0");break}
+case 2: {cost=BigNumber.from("1.2e0");break}
+case 3: {cost=BigNumber.from("1.3e0");break}
+case 4: {cost=BigNumber.from("1.4e0");break}
+case 5: {cost=BigNumber.from("1.5e0");break}
 case 6: {cost=BigNumber.from("3e2");break}
 case 7: {cost=BigNumber.from("3.4e2");break}
 case 8: {cost=BigNumber.from("3.8e2");break}
