@@ -6,7 +6,7 @@ import { Utils } from "./api/Utils";
 
 var id = "aag";
 var name = "acidic Theory v0.101";
-var description = "v0.10114, aag, C test2. just borrowing some code from basic theory i sure hope this works";
+var description = "v0.10114, aag, C test3. just borrowing some code from basic theory i sure hope this works";
 var authors = "playsprout, scbose";
 var version = 0.10114;
 
@@ -220,7 +220,7 @@ var tick = (elapsedTime, multiplier) => {
     let bonus = theory.publicationMultiplier;
     if (m5.level == 0) {
         currency.value += dt * bonus * getC1(tai.level).pow(getC1Exponent(c1Exp.level)) *
-                                   getC2(rao.level).pow(getC2Exponent(c2Exp.level)) * getC3(C.level);
+                                   getC2(rao.level).pow(getC2Exponent(c2Exp.level)) * getC3(C.level).pow(getM4Exponent(m4Exp.level));
     }
     else {
         currency.value += dt * bonus * getC1(tai.level).pow(getC1Exponent(c1Exp.level)) *
@@ -279,7 +279,7 @@ var get2DGraphValue = () => currency.value.sign * (BigNumber.ONE + currency.valu
 
 var getC1 = (level) => Utils.getStepwisePowerSum(level, 3, 5, 0);
 var getC2 = (level) => BigNumber.TWO.pow(level);
-var getC3 = (level) => Utils.getStepwisePowerSum(level, 2, 10, 0);
+var getC3 = (level) => Utils.getStepwisePowerSum(level, 2, 10, 1);
 var getC1Exponent = (level) => BigNumber.from(1 + 0.08 * level);
 var getC2Exponent = (level) => BigNumber.from(1 + 0.077 * level);
 var getM4Exponent = (level) => BigNumber.from( ((level + 1) * (level + 2)/2 - 1) * 0.0003);
