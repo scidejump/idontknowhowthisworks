@@ -4,7 +4,7 @@ import { BigNumber } from "./api/BigNumber";
 import { theory } from "./api/Theory";
 import { Utils } from "./api/Utils";
 
-var id = "aah";
+var id = "ouo";
 var name = "acidic Theory v0.102";
 var description = "v0.10121, aah, bugfixing. main testing version. i really really hope this works. thanks playsprout for the code";
 var authors = "scbose";
