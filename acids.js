@@ -6,9 +6,9 @@ import { Utils } from "./api/Utils";
 
 var id = "aag";
 var name = "acidic Theory v0.101";
-var description = "v0.10115, aag, balance5. just borrowing some code from basic theory i sure hope this works";
+var description = "v0.10116, aag, balance6. just borrowing some code from basic theory i sure hope this works";
 var authors = "playsprout, scbose";
-var version = 0.10115;
+var version = 0.10116;
 
 //acid
 var acids=["H2O", "PhOH", "HClO", "H2CO3", "AcOH", "HF", "H3PO4", "H3O+"];
