@@ -24,7 +24,7 @@ var cost;
 var cat2;
 switch(level) {
         //test values, original: 8, 16, 24, 40, 60, 100, 300, 340, 380, 420, 460, 500, 580
-case 0: {cost=BigNumber.from("1e0");break}
+case 0: {cost=BigNumber.from("7e0");break}
 case 1: {cost=BigNumber.from("1.1e0");break}
 case 2: {cost=BigNumber.from("1.2e0");break}
 case 3: {cost=BigNumber.from("1.3e0");break}
@@ -97,7 +97,7 @@ var init = () => {
 
     /////////////////////
     // Permanent Upgrades
-    theory.createPublicationUpgrade(0, currency, 1e1);
+    theory.createPublicationUpgrade(0, currency, 1e4);
     theory.createBuyAllUpgrade(1, currency, 1e8);
     theory.createAutoBuyerUpgrade(2, currency, 1e6);
 
@@ -159,7 +159,7 @@ var init = () => {
 
     ///////////////////
     chapter1 = theory.createStoryChapter(0, "An Existential Crisis", "You have had this same dream every day for your life. \nThere's a function, and all you see is c1 and c2, along with a graph. Nothing else.\nAs you reach e1000 rho, however, the function just disappears. You wake up. \nAs you question this, you also wonder: why did I go through all this theorywork to discover such a simple way to solve whether the function you were handed to exists? Why you? Why do you exist? Why do these theories exist? Why does everything exist? Is there ever an answer to existence? \nWhoa. You've gone too far. Besides, how would you have an existential crisis at the ripe age of 82? \nYou think: perhaps I just follow my dreams and make a simple theory with just c1 and c2, as well as exponents. And rho as the currency, as expected. Besides, would it really hurt? You also embellish the theory with a few extra equations that make it more appealing to the scientific community by adding some seemingly random (but mathematically sensible) equations. \nYou name the variables Tai and Rao after your best friends.", () => currency.value == 0);
-    chapter2 = theory.createStoryChapter(1, "Pain", "You see that your theory is progressing so slowly. It's painstaking, doing such slow calculations and watching. You wish it would be quicker and you'd get better tools by publication. But you decide to wait until you can publish and not give up. You need an answer.", () => currency.value > BigNumber.from("1e5"));
+    chapter2 = theory.createStoryChapter(1, "Pain", "You see that your theory is progressing so slowly. It's painstaking, doing such slow calculations and watching. You wish it would be quicker and you'd get better tools by publication. But you decide to wait until you can publish and not give up. You need an answer.", () => currency.value > BigNumber.from("1e4"));
     chapter3 = theory.createStoryChapter(2, "Start of Speed", "Finally, you get to publish your theory. You call it \"The Theory of Simplicity\". \nMost people laugh at you, but others think you're on to something.", () => currency.value > BigNumber.from("1e7"));
     chapter4 = theory.createStoryChapter(3, "More Speed, Please", "You have achieved your first e20 of currency! \nYou celebrate by buying a milestone, making you faster. ", () => currency.value > BigNumber.from("1e20"));
     chapter5 = theory.createStoryChapter(4, "Century", "100. Why 100? Why is this number so special? What if the number system was different? How would it be different? Why does this exist? Why do we exist? Why does life exist? And why is my function so simple? \nThoughts attack your head like hornets, but you push on.", () => currency.value > BigNumber.from("1e100"));
