@@ -6,9 +6,9 @@ import { Utils } from "./api/Utils";
 
 var id = "aag";
 var name = "acidic Theory v0.101";
-var description = "v0.10114, aag, C test4. just borrowing some code from basic theory i sure hope this works";
+var description = "v0.10115, aag, pubmult. just borrowing some code from basic theory i sure hope this works";
 var authors = "playsprout, scbose";
-var version = 0.10114;
+var version = 0.10115;
 
 //acid
 var acids=["H2O", "PhOH", "HClO", "H2CO3", "AcOH", "HF", "H3PO4", "H3O+"];
@@ -272,8 +272,8 @@ var getPrimaryEquation = () => {
 
 var getSecondaryEquation = () => theory.latexSymbol + "=\\max\\rho^{0.4}";
 var getTertiaryEquation = () => "k=" + list2[c1Exp.level];
-var getPublicationMultiplier = (tau) => tau.pow(0.4);
-var getPublicationMultiplierFormula = (symbol) => symbol + "^{0.4}";
+var getPublicationMultiplier = (tau) => tau.pow(0.35);
+var getPublicationMultiplierFormula = (symbol) => symbol + "^{0.35}";
 var getTau = () => currency.value.pow(0.4);
 var get2DGraphValue = () => currency.value.sign * (BigNumber.ONE + currency.value.abs()).log10().toNumber();
 
