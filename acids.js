@@ -6,7 +6,7 @@ import { Utils } from "./api/Utils";
 
 var id = "aag";
 var name = "acidic Theory v0.101";
-var description = "v0.10115, aag, pubmult. just borrowing some code from basic theory i sure hope this works";
+var description = "v0.10115, aag, balance. just borrowing some code from basic theory i sure hope this works";
 var authors = "playsprout, scbose";
 var version = 0.10115;
 
@@ -79,7 +79,7 @@ var init = () => {
     {
         let getDesc = (level) => "\\text{steal electron pair}: 2^{" + level + "}";
         let getInfo = (level) => "\\text{stolen pairs}=" + getC2(level).toString(0);
-        rao = theory.createUpgrade(1, currency, new ExponentialCost(5, Math.log2(5)));
+        rao = theory.createUpgrade(1, currency, new ExponentialCost(5, Math.log2(16)));
         rao.getDescription = (_) => Utils.getMath(getDesc(rao.level));
         rao.getInfo = (amount) => Utils.getMathTo(getInfo(rao.level), getInfo(rao.level + amount));
     }
@@ -88,7 +88,7 @@ var init = () => {
         if (1 == 1) {
             let getDesc = (level) => "\\text{why doesnt this work?}{" + level + "}";
             let getInfo = (level) => "\\text{huhhh??}" + getC3(level).toString(0);
-            C = theory.createUpgrade(2, currency, new ExponentialCost(BigNumber.from("1e10"), 10));
+            C = theory.createUpgrade(2, currency, new ExponentialCost(BigNumber.from("1e10"), 8));
             C.getDescription = (_) => Utils.getMath(getDesc(C.level));
             C.getInfo = (amount) => Utils.getMathTo(getInfo(C.level), getInfo(C.level + amount));
         }
@@ -203,7 +203,7 @@ function d(C){
 }
 
 function d2(C){
-    let getDesc2 = (level) => "\\text{light:}{" + level + "}";
+    let getDesc2 = (level) => "\\text{light:}" + getC3(level).toString(0);
     let getInfo2 = (level) => "\\text{light intensity}=" + getC3(level).toString(0);
     C.getDescription = (_) => Utils.getMath(getDesc2(C.level));
     C.getInfo = (amount) => Utils.getMathTo(getInfo2(C.level), getInfo2(C.level + amount));
