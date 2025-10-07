@@ -116,7 +116,7 @@ var init = () => {
     }
 
     {
-        c2Exp = theory.createMilestoneUpgrade(1, 3);
+        c2Exp = theory.createMilestoneUpgrade(1, 2);
         c2Exp.description = Localization.getUpgradeIncCustomExpDesc("rao", "0.077");
         c2Exp.info = Localization.getUpgradeIncCustomExpInfo("rao", "0.077");
         c2Exp.boughtOrRefunded = (_) => theory.invalidatePrimaryEquation();
@@ -219,7 +219,7 @@ var tick = (elapsedTime, multiplier) => {
     let dt = BigNumber.from(elapsedTime * multiplier);
     let bonus = theory.publicationMultiplier;
     if (m5.level == 0) {
-        currency.value += dt * bonus * getC1(tai.level).pow(getC1Exponent(c1Exp.level)) *
+        currency.value += dt * bonus * getC1(tai.level).pow(getC2Exponent(c2Exp.level)) *
                                    getC2(rao.level).pow(getC2Exponent(c2Exp.level)) * getC3(C.level).pow(getM4Exponent(m4Exp.level));
     }
     else {
@@ -241,9 +241,9 @@ var tick = (elapsedTime, multiplier) => {
 var getPrimaryEquation = () => {
     let result = "\\dot{\\rho} = (tai)";
 
-    if (c1Exp.level == 1) result += "^{1.08}";
-    if (c1Exp.level == 2) result += "^{1.16}";
-    if (c1Exp.level == 3) result += "^{1.24}";
+    if (c2Exp.level == 1) result += "^{1.033}";
+    if (c2Exp.level == 2) result += "^{1.066}";
+    if (c2Exp.level == 3) result += "^{1.24}";
  
     result += "(rao)";
     if (c2Exp.level == 1) result += "^{1.077}";
@@ -281,7 +281,7 @@ var getC1 = (level) => Utils.getStepwisePowerSum(level, 3, 5, 0);
 var getC2 = (level) => BigNumber.TWO.pow(level);
 var getC3 = (level) => Utils.getStepwisePowerSum(level, 2, 10, 1);
 var getC1Exponent = (level) => BigNumber.from(1 + 0.08 * level);
-var getC2Exponent = (level) => BigNumber.from(1 + 0.077 * level);
+var getC2Exponent = (level) => BigNumber.from(1 + 0.033 * level);
 var getM4Exponent = (level) => BigNumber.from( ((level + 1) * (level + 2)/2 - 1) * 0.0003);
 
 if (theory.tau >= BigNumber.from("1e650")){
