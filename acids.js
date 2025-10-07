@@ -272,8 +272,8 @@ var getPrimaryEquation = () => {
 
 var getSecondaryEquation = () => theory.latexSymbol + "=\\max\\rho^{0.4}";
 var getTertiaryEquation = () => "k=" + list2[c1Exp.level];
-var getPublicationMultiplier = (tau) => tau.pow(0.4);
-var getPublicationMultiplierFormula = (symbol) => symbol + "^{0.4}";
+var getPublicationMultiplier = (tau) => tau.pow(0.35);
+var getPublicationMultiplierFormula = (symbol) => symbol + "^{0.35}";
 var getTau = () => currency.value.pow(0.4);
 var get2DGraphValue = () => currency.value.sign * (BigNumber.ONE + currency.value.abs()).log10().toNumber();
 
