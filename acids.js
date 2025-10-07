@@ -6,12 +6,13 @@ import { Utils } from "./api/Utils";
 
 var id = "aag";
 var name = "acidic Theory v0.101";
-var description = "v0.10113, aag. just borrowing some code from basic theory i sure hope this works";
+var description = "v0.10114, aag, list2 test. just borrowing some code from basic theory i sure hope this works";
 var authors = "playsprout, scbose";
-var version = 0.10113;
+var version = 0.10114;
 
 //acid
 var acids=["H2O", "PhOH", "HClO", "H2CO3", "AcOH", "HF", "H3PO4", "H3O+"];
+var list2=["1e0","1.6e4","3.25e6","4.3e7","1.76e9","7.2e10","7.52e11","1e14"];
 
 var currency;
 var tai, rao, C;
