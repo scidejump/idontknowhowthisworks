@@ -5,10 +5,10 @@ import { theory } from "./api/Theory";
 import { Utils } from "./api/Utils";
 
 var id = "aah";
-var name = "acidic Theory v0.101";
-var description = "v0.1012, aah, bugfixing. main testing version. i really really hope this works. thanks playsprout for the code";
+var name = "acidic Theory v0.102";
+var description = "v0.10121, aah, bugfixing. main testing version. i really really hope this works. thanks playsprout for the code";
 var authors = "scbose";
-var version = 0.1012;
+var version = 0.10121;
 
 //acid
 var acids=["H2O", "PhOH", "HClO", "H2CO3", "AcOH", "HF", "H3PO4", "H3O+"];
@@ -134,7 +134,7 @@ var init = () => {
     
     /////////////////
     //// Achievements
-    //achievement1 = theory.createAchievement(0, cat, "The Beginnings", "Started!", () => currency.value == 0);
+    achievement1 = theory.createAchievement(0, cat, "The Beginnings", "Started!", () => currency.value == 0);
     //achievement2 = theory.createAchievement(1, cat, "gogogo!", "Reach 1e5 rho", () => currency.value > BigNumber.from("1e5"));
     //achievement3 = theory.createAchievement(2, cat, "Nostalgia", "Reach 1e7 rho, enough to unlock publications", () => currency.value > BigNumber.from("1e7"));
     //achievement4 = theory.createAchievement(3, cat, "A Stone's Throw Away", "Reach 1e20 rho, enough to unlock the first milestone", () => currency.value > BigNumber.from("1e20"));
@@ -156,7 +156,7 @@ var init = () => {
     //achievement20 = theory.createSecretAchievement(19, cat2, "Did you really think I wouldn't include another funny number achievment here?", "69 levels of c1 and 420 levels of C2", "something else is funny", () => tai.level === 420 && rao.level === 69);
 
     ///////////////////
-    //chapter1 = theory.createStoryChapter(0, "An Eccentric Occurence", "You have had nothing like this dream ever in your life. \nThere's an arbitrarily orange background for no particular reason, and all you see is a tiny dot, along with a graph. Nothing else.\nAs time passes, more tiny dots appear, slowly filling up your field of view. \nYou look closer at one of the dots. It seems to have some sort of larger shell around it. It feels empty, almost as if it's missing something. \nLooking around, you see something new in the sea of dots. It's a lot larger than the dots, and seems to have some fuzziness around it. It's lopsided, with one side being a larger than the other. \nSuddenly, one of the dots goes near the big lump. Your vision zooms in, and time seems to slow down as you watch them accelerate towards each other. You think to yourself: don't blink! But you flinch as they collide and you only catch a glimpse of a larger, symmetrical lump. By the time you're focused again, they're gone. And whatever was formed is also gone. \nOh well. At least there'll be more, surely. You look around again. Your eyes travel across the graph and you notice something. A spike in the graph. You go over to the graph to examine it. You look at the peak and a value written there. -55.7.", () => currency.value == 0);
+    chapter1 = theory.createStoryChapter(0, "An Eccentric Occurence", "You have had nothing like this dream ever in your life. \nThere's an arbitrarily orange background for no particular reason, and all you see is a tiny dot, along with a graph. Nothing else.\nAs time passes, more tiny dots appear, slowly filling up your field of view. \nYou look closer at one of the dots. It seems to have some sort of larger shell around it. It feels empty, almost as if it's missing something. \nLooking around, you see something new in the sea of dots. It's a lot larger than the dots, and seems to have some fuzziness around it. It's lopsided, with one side being a larger than the other. \nSuddenly, one of the dots goes near the big lump. Your vision zooms in, and time seems to slow down as you watch them accelerate towards each other. You think to yourself: don't blink! But you flinch as they collide and you only catch a glimpse of a larger, symmetrical lump. By the time you're focused again, they're gone. And whatever was formed is also gone. \nOh well. At least there'll be more, surely. You look around again. Your eyes travel across the graph and you notice something. A spike in the graph. You go over to the graph to examine it. You look at the peak and a value written there. -55.7.", () => currency.value == 0);
     //chapter2 = theory.createStoryChapter(1, "Exalarm", "You can barely make sense of it before a deafening blast of sound jolts you back to reality. \nYou roll over in bed and check the time on your phone. 3:44am, it reads. Just about time. You unlock your phone and the Exponential Idle offline screen appears. While it loads, you wonder what that dream could possibly have meant. You've been pondering this for several days already. \nTaking a sip of water and buying several v upgrades in the custom theory Magnetic Fields, you have a thought. There was a graph and a value. Custom theories have a graph and lots of values. Maybe a custom theory would help you understand it.", () => currency.value > BigNumber.from("1e0"));
     //chapter3 = theory.createStoryChapter(2, "oops", "This doesn't make much more sense. Maybe it meant something more literal? You suck at javascript anyways. \nYou slam your table in frustration. Why are you so obsessed with this? You have no idea. You might've slammed it a little hard though, because those freshly chopped lemons and that baking soda is about to fall into that bowl of water that just so happens to have a data logger measuring temperature. You go to see what happened and you see on the datalogger that the temperature increased. Strange. You look closer. The temperature increase was a mere fraction of a degree. Wow, you think, infinite energy glitch! You quickly rush to get all your lemons and baking soda before realising this is a stupid idea.", () => currency.value > BigNumber.from("2e0"));
     //chapter4 = theory.createStoryChapter(3, "More Content, Please", "This story is stupid i think i wont put this in the final thing.", () => currency.value > BigNumber.from("1e20"));
@@ -178,15 +178,15 @@ var init = () => {
     //chapter13 = theory.createStoryChapter(12, "Explosion", "\"You're ready\", Tay says. Your heart races as you await this final moment, one which you have waited for so long. \n \"Just press this button\" he says. \n And you do.", () => currency.value >= BigNumber.from("1e1450"));
     //chapter14 = theory.createStoryChapter(13, "The True Finality", "Everything explodes in front of you. You have reached 1500 in no time. \n But the rates slow down. \n \"And for good reason too, you were about to faint\", says Tay. \n \"This is what true C power does to a man. It's too much for any man to handle, mind you, even gods of the universe find it too hard to handle - and yes, I am one of them. So are tai and rao. They wanted you to realize your destiny and you have. And as a reward, you get to keep some of the C power you had, but remember - with great power comes great responsibility.\", continued Tay\n And just behind you, a silver platter pops up with a title \"Solution to the Riemann Hypothesis - Reveal only when the world is ready\".\n You take it and realize that similar to C-power, some things are too much for the world to handle at the moment, such as the mathematical explosion from the proof. So, you hide it in one of your drawers, hope that people will take ages to find it. \n 42 years later, someone finds it. \n Their name is propfeds. \n Anyway, a quick thank you from the author of this CT (invalid-user) for playing this, I really enjoyed making the story. This is the end of the theory but you can continue playing this for the fun of it even after the end :)", () => {
         
-    //    let result = m5.level == 1
-    //    if (result) {
-    //        if (theory.tau < BigNumber.from("9e599")){
-    //            currency.value = BigNumber.from("1.05e1500")
-    //            theory.invalidatePrimaryEquation();
-    //        }
+        let result = m5.level == 1
+        if (result) {
+            if (theory.tau < BigNumber.from("9e599")){
+                currency.value = BigNumber.from("1.05e1500")
+                theory.invalidatePrimaryEquation();
+            }
             
-    //    }
-    //    return result});
+        }
+        return result});
 
     //// Story chapters
 
@@ -210,8 +210,8 @@ function d2(C){
 var updateAvailability = () => {
     c2Exp.isAvailable = c1Exp.level >= 0;
     //m4Exp plan to unlock when c2Exp.level > 0
-    m4Exp.isAvailable = 1 == 7;
-    m5.isAvailable = 1 == 6
+    m4Exp.isAvailable = c1Exp.level >= 20;
+    m5.isAvailable = c1Exp.level >= 20;
 }
 
 var tick = (elapsedTime, multiplier) => {
@@ -219,7 +219,7 @@ var tick = (elapsedTime, multiplier) => {
     let bonus = theory.publicationMultiplier;
     if (m5.level == 0) {
         currency.value += dt * bonus * BigNumber.from(list2[c1Exp.level]) * getC1(tai.level).pow(getC2Exponent(c2Exp.level)) *
-                                   getC2(rao.level) * getC3(C.level).pow(+(c2Exp.level > 0));
+                                   getC2(rao.level);
     }
     else {
         currency.value += dt * bonus * getC1(tai.level).pow(getC1Exponent(c1Exp.level)) *
