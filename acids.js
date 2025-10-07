@@ -6,7 +6,7 @@ import { Utils } from "./api/Utils";
 
 var id = "aah";
 var name = "acidic Theory v0.101";
-var description = "v0.1012, aah. main testing version. i really really hope this works. thanks playsprout for the code";
+var description = "v0.1012, aah, bugfixing. main testing version. i really really hope this works. thanks playsprout for the code";
 var authors = "scbose";
 var version = 0.1012;
 
@@ -218,7 +218,7 @@ var tick = (elapsedTime, multiplier) => {
     let dt = BigNumber.from(elapsedTime * multiplier);
     let bonus = theory.publicationMultiplier;
     if (m5.level == 0) {
-        currency.value += dt * bonus * Bignumber.ONE * getC1(tai.level).pow(getC2Exponent(c2Exp.level)) *
+        currency.value += dt * bonus * BigNumber.from(list2[c1Exp.level]) * getC1(tai.level).pow(getC2Exponent(c2Exp.level)) *
                                    getC2(rao.level) * getC3(C.level).pow(+(c2Exp.level > 0));
     }
     else {
@@ -239,12 +239,12 @@ var tick = (elapsedTime, multiplier) => {
 
 var getPrimaryEquation = () => {
     let result = "\\dot{\\rho} = k(nH^+)";
-    if (c2Exp.level == 1) result += "^{1.033}"
-    if (c2Exp.level == 2) result += "^{1.066}"
+    if (c2Exp.level == 1) result += "^{1.033}";
+    if (c2Exp.level == 2) result += "^{1.066}";
  
     result += "(\\frac{e^-}{2})";
-    if (c2Exp.level == 0) result += "+(\\frac{[H+]K_aK_b}{(10^{-\\text{lg}(14-pOH)})K_w})"
-    if (c2Exp.level > 0) result += "(\\text{light})"
+    if (c2Exp.level == 0) result += "+(\\frac{[H+]K_aK_b}{(10^{-\\text{lg}(14-pOH)})K_w})";
+    if (c2Exp.level > 0) result += "(\\text{light})";
     //if (c2Exp.level == 1) result += "^{1.077}";
     //if (c2Exp.level == 2) result += "^{1.154}";
     //if (c2Exp.level == 3) result += "^{1.231}";
