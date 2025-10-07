@@ -6,7 +6,7 @@ import { Utils } from "./api/Utils";
 
 var id = "aag";
 var name = "acidic Theory v0.101";
-var description = "v0.10115, aag, balance4. just borrowing some code from basic theory i sure hope this works";
+var description = "v0.10115, aag, balance5. just borrowing some code from basic theory i sure hope this works";
 var authors = "playsprout, scbose";
 var version = 0.10115;
 
@@ -220,7 +220,7 @@ var tick = (elapsedTime, multiplier) => {
     let bonus = theory.publicationMultiplier;
     if (m5.level == 0) {
         currency.value += dt * bonus * getC1(tai.level).pow(getC2Exponent(c2Exp.level)) *
-                                   getC2(rao.level) * BigNumber.ONE * getC3(C.level).pow(getM4Exponent(m4Exp.level));
+                                   getC2(rao.level) * getKacid(c1Exp.level) * getC3(C.level).pow(getM4Exponent(m4Exp.level));
     }
     else {
         currency.value += dt * bonus * getC1(tai.level).pow(getC1Exponent(c1Exp.level)) *
@@ -283,6 +283,7 @@ var getC3 = (level) => Utils.getStepwisePowerSum(level, 2, 10, 1);
 var getC1Exponent = (level) => BigNumber.from(1 + 0.08 * level);
 var getC2Exponent = (level) => BigNumber.from(1 + 0.033 * level);
 var getM4Exponent = (level) => BigNumber.from( ((level + 1) * (level + 2)/2 - 1) * 0.0003);
+var getKacid = (level) => BigNumber.from(list2[level])
 
 if (theory.tau >= BigNumber.from("1e650")){
   theory.tau = BigNumber.from("1e650")
