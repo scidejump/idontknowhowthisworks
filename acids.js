@@ -6,7 +6,7 @@ import { Utils } from "./api/Utils";
 
 var id = "aag";
 var name = "acidic Theory v0.101";
-var description = "v0.10115, aag, balance2. just borrowing some code from basic theory i sure hope this works";
+var description = "v0.10115, aag, balance3. just borrowing some code from basic theory i sure hope this works";
 var authors = "playsprout, scbose";
 var version = 0.10115;
 
@@ -117,8 +117,8 @@ var init = () => {
 
     {
         c2Exp = theory.createMilestoneUpgrade(1, 2);
-        c2Exp.description = Localization.getUpgradeIncCustomExpDesc("rao", "0.077");
-        c2Exp.info = Localization.getUpgradeIncCustomExpInfo("rao", "0.077");
+        c2Exp.description = Localization.getUpgradeIncCustomExpDesc("tai", "0.033");
+        c2Exp.info = Localization.getUpgradeIncCustomExpInfo("tai", "0.033");
         c2Exp.boughtOrRefunded = (_) => theory.invalidatePrimaryEquation();
     }
     {
@@ -220,7 +220,7 @@ var tick = (elapsedTime, multiplier) => {
     let bonus = theory.publicationMultiplier;
     if (m5.level == 0) {
         currency.value += dt * bonus * getC1(tai.level).pow(getC2Exponent(c2Exp.level)) *
-                                   getC2(rao.level).pow(getC2Exponent(c2Exp.level)) * getC3(C.level).pow(getM4Exponent(m4Exp.level));
+                                   getC2(rao.level) * BigNumber.from("list2[c1Exp.level"]) * getC3(C.level).pow(getM4Exponent(m4Exp.level));
     }
     else {
         currency.value += dt * bonus * getC1(tai.level).pow(getC1Exponent(c1Exp.level)) *
@@ -239,15 +239,15 @@ var tick = (elapsedTime, multiplier) => {
 }
 
 var getPrimaryEquation = () => {
-    let result = "\\dot{\\rho} = (tai)";
+    let result = "\\dot{\\rho} = k(tai)";
 
     if (c2Exp.level == 1) result += "^{1.033}";
     if (c2Exp.level == 2) result += "^{1.066}";
     if (c2Exp.level == 3) result += "^{1.24}";
  
     result += "(rao)";
-    if (c2Exp.level == 1) result += "^{1.077}";
-    if (c2Exp.level == 2) result += "^{1.154}";
+    if (c2Exp.level == 5) result += "^{1.077}";
+    if (c2Exp.level == 4) result += "^{1.154}";
     if (c2Exp.level == 3) result += "^{1.231}";
 
     if (theory.tau <= BigNumber.from("1e300"))
