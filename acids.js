@@ -86,8 +86,8 @@ var init = () => {
     // c3
     {
         if (1 == 1) {
-            let getDesc = (level) => "\\text{light:}{" + level + "}";
-            let getInfo = (level) => "\\text{light:}" + getC3(level).toString(0);
+            let getDesc = (level) => "\\text{why doesnt this work?}{" + level + "}";
+            let getInfo = (level) => "\\text{huhhh??}" + getC3(level).toString(0);
             C = theory.createUpgrade(2, currency, new ExponentialCost(BigNumber.from("1e10"), 10));
             C.getDescription = (_) => Utils.getMath(getDesc(C.level));
             C.getInfo = (amount) => Utils.getMathTo(getInfo(C.level), getInfo(C.level + amount));
