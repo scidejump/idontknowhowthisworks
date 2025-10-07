@@ -6,7 +6,7 @@ import { Utils } from "./api/Utils";
 
 var id = "aag";
 var name = "acidic Theory v0.101";
-var description = "v0.10114, aag, C test. just borrowing some code from basic theory i sure hope this works";
+var description = "v0.10114, aag, C test2. just borrowing some code from basic theory i sure hope this works";
 var authors = "playsprout, scbose";
 var version = 0.10114;
 
@@ -220,7 +220,7 @@ var tick = (elapsedTime, multiplier) => {
     let bonus = theory.publicationMultiplier;
     if (m5.level == 0) {
         currency.value += dt * bonus * getC1(tai.level).pow(getC1Exponent(c1Exp.level)) *
-                                   getC2(rao.level).pow(getC2Exponent(c2Exp.level)) * getC3(C.level).pow(getM4Exponent(m4Exp.level));
+                                   getC2(rao.level).pow(getC2Exponent(c2Exp.level)) * getC3(C.level);
     }
     else {
         currency.value += dt * bonus * getC1(tai.level).pow(getC1Exponent(c1Exp.level)) *
