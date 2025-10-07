@@ -218,7 +218,7 @@ var tick = (elapsedTime, multiplier) => {
     let dt = BigNumber.from(elapsedTime * multiplier);
     let bonus = theory.publicationMultiplier;
     if (m5.level == 0) {
-        currency.value += dt * bonus * Bignumber.from(list2[c1Exp.level]) * getC1(tai.level).pow(getC2Exponent(c2Exp.level)) *
+        currency.value += dt * bonus * Bignumber.ONE * getC1(tai.level).pow(getC2Exponent(c2Exp.level)) *
                                    getC2(rao.level) * getC3(C.level).pow(+(c2Exp.level > 0));
     }
     else {
