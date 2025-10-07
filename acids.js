@@ -203,8 +203,8 @@ function d(C){
 }
 
 function d2(C){
-    let getDesc2 = (level) => "C=10^{" + level + "}";
-    let getInfo2 = (level) => "C=" + getC3(level).toString(0);
+    let getDesc2 = (level) => "\\text{light:}{" + level + "}";
+    let getInfo2 = (level) => "\\text{light intensity}=" + getC3(level).toString(0);
     C.getDescription = (_) => Utils.getMath(getDesc2(C.level));
     C.getInfo = (amount) => Utils.getMathTo(getInfo2(C.level), getInfo2(C.level + amount));
 }
