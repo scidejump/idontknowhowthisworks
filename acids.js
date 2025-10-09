@@ -6,7 +6,7 @@ import { Utils } from "./api/Utils";
 
 var id = "aag";
 var name = "acidic Theory v0.101";
-var description = "v0.10132, aag, ExponentialIdle.BigNumber+BigNumberException. just borrowing some code from basic theory i sure hope this works";
+var description = "v0.10132, aag, fixB. just borrowing some code from basic theory i sure hope this works";
 var authors = "playsprout, scbose";
 var version = 0.10115;
 
@@ -15,7 +15,7 @@ var acids=["H2O", "PhOH", "HClO", "H2CO3", "AcOH", "HF", "H3PO4", "H3O+"];
 var list2=["1e0","1.6e4","3.25e6","4.3e7","1.76e9","7.2e10","7.52e11","1e14"];
 const fibSqrt5 = BigNumber.FIVE.sqrt();
 const fibA = (BigNumber.ONE + fibSqrt5) / BigNumber.TWO;
-const fibB = (BigNumber.ONE - fibSqrt5) / BigNumber.TWO;
+const fibB = (fibSqrt5 - BigNumber.ONE) / BigNumber.TWO;
 
 
 var currency;
@@ -293,8 +293,8 @@ var getC2 = (level) => BigNumber.TWO.pow(level);
 var getC3 = (level) => Utils.getStepwisePowerSum(level, 2, 10, 1);
 var getC4 = (level) => {
         if (level % 2 == 0)
-                return (fibA.pow(level).minus(fibB.pow(level))) / fibSqrt5;
-        return (fibA.pow(level).plus(fibB.pow(level))) / fibSqrt5;
+                return (fibA.pow(level) - fibB.pow(level)) / fibSqrt5;
+        return (fibA.pow(level) + fibB.pow(level)) / fibSqrt5;
 };
 var getC1Exponent = (level) => BigNumber.from(1 + 0.08 * level);
 var getC2Exponent = (level) => BigNumber.from(1 + 0.033 * level);
