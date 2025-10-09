@@ -6,9 +6,9 @@ import { Utils } from "./api/Utils";
 
 var id = "aag";
 var name = "acidic Theory v0.101";
-var description = "v0.10133, aag, c2exp. just borrowing some code from basic theory i sure hope this works";
+var description = "v0.10134, aag, c2exp2. just borrowing some code from basic theory i sure hope this works";
 var authors = "playsprout, scbose";
-var version = 0.10133;
+var version = 0.10134;
 
 //acid
 var acids=["H2O", "PhOH", "HClO", "H2CO3", "AcOH", "HF", "H3PO4", "H3O+"];
@@ -225,8 +225,10 @@ function d2(C){
 
 var updateAvailability = () => {
     c2Exp.isAvailable = c1Exp.level >= 0;
+    C.isAvailable = c2Exp.level > 0;
+    c4.isAvailable = c2Exp.level > 0;
     m4Exp.isAvailable = theory.tau >= BigNumber.from("1e300");
-    m5.isAvailable = c2Exp.level == 1
+    m5.isAvailable = m4Exp.level == 6
 }
 
 var tick = (elapsedTime, multiplier) => {
