@@ -6,7 +6,7 @@ import { Utils } from "./api/Utils";
 
 var id = "aag";
 var name = "acidic Theory v0.101";
-var description = "v0.10121, aag, fix2. just borrowing some code from basic theory i sure hope this works";
+var description = "v0.10121, aag, fix3. just borrowing some code from basic theory i sure hope this works";
 var authors = "playsprout, scbose";
 var version = 0.10121;
 
@@ -94,8 +94,8 @@ var init = () => {
         }
     // new mystery upgrade
     {
-        let getDesc = (level) => "\\text{plants:} F_{" + level + "}";
-        let getInfo = (level) => "\\text{number of plants:}" + getC4(level).toString(0);
+        let getDesc = (level) => "i am literally following the same format={" + level + "}";
+        let getInfo = (level) => "so why isnt this working=" + getC4(level).toString(0);
         c4 = theory.createUpgrade(3, currency, new ExponentialCost(BigNumber.from("1e7"), 2));
         c4.getDescription = (_) => Utils.getMath(getDesc(c4.level));
         c4.getInfo = (amount) => Utils.getMathTo(getInfo(c4.level), getInfo(c4.level+amount));
@@ -128,7 +128,6 @@ var init = () => {
         c2Exp.info = "plants can make H+, right???? Unlocks plants and lights";
         c2Exp.boughtOrRefunded = (_) => {
                 theory.invalidatePrimaryEquation();
-                
         }
     {
         m4Exp = theory.createMilestoneUpgrade(2, 6);
@@ -220,8 +219,6 @@ function d2(C){
 
 var updateAvailability = () => {
     c2Exp.isAvailable = c1Exp.level >= 2;
-    C.isAvailable = c2Exp.level > 0;
-    c4.isAvailable = c2Exp.level > 0;
     m4Exp.isAvailable = theory.tau >= BigNumber.from("1e300");
     m5.isAvailable = m4Exp.level == 6
 }
@@ -256,7 +253,6 @@ var getPrimaryEquation = () => {
     if (c2Exp.level == 5) result += "^{1.077}";
     if (c2Exp.level == 4) result += "^{1.154}";
     if (c2Exp.level == 3) result += "^{1.231}";
-    if (c2Exp.level > 0) result += "+(p)(l)(c)";
     result += ")";
     if (theory.tau <= BigNumber.from("1e300"))
         result+="+(\\frac{[H+]K_aK_b}{(10^{-\\text{lg}(14-pOH)})K_w})"
@@ -288,10 +284,6 @@ var get2DGraphValue = () => currency.value.sign * (BigNumber.ONE + currency.valu
 var getC1 = (level) => Utils.getStepwisePowerSum(level, 3, 5, 0);
 var getC2 = (level) => BigNumber.TWO.pow(level);
 var getC3 = (level) => Utils.getStepwisePowerSum(level, 5, 10, 1);
-var fibSqrt5 = BigNumber.FIVE.sqrt();
-var fibA = (BigNumber.ONE + fibSqrt5) / BigNumber.TWO;
-var fibB = (fibSqrt5 - BigNumber.ONE) / BigNumber.TWO;
-// thanks prop
 var getC4 = (level) => BigNumber.TWO.pow(level);
 var getC1Exponent = (level) => BigNumber.from(1 + 0.08 * level);
 var getC2Exponent = (level) => BigNumber.from(1 + 0.033 * level);
