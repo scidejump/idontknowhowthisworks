@@ -92,6 +92,7 @@ var init = () => {
             C.getDescription = (_) => Utils.getMath(getDesc(C.level));
             C.getInfo = (amount) => Utils.getMathTo(getInfo(C.level), getInfo(C.level + amount));
         }
+    }
     // new mystery upgrade
     {
         let getDesc = (level) => "i am literally following the same format={" + level + "}";
