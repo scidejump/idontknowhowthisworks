@@ -6,7 +6,7 @@ import { Utils } from "./api/Utils";
 
 var id = "aag";
 var name = "acidic Theory v0.101";
-var description = "v0.10133, aag, taiexp. just borrowing some code from basic theory i sure hope this works";
+var description = "v0.10133, aag, c2exp. just borrowing some code from basic theory i sure hope this works";
 var authors = "playsprout, scbose";
 var version = 0.10133;
 
@@ -127,10 +127,13 @@ var init = () => {
     }
 
     {
-        c2Exp = theory.createMilestoneUpgrade(1, 2);
-        c2Exp.description = Localization.getUpgradeIncCustomExpDesc("tai", "0.033");
-        c2Exp.info = Localization.getUpgradeIncCustomExpInfo("tai", "0.033");
-        c2Exp.boughtOrRefunded = (_) => theory.invalidatePrimaryEquation();
+        c2Exp = theory.createMilestoneUpgrade(1, 1);
+        c2Exp.description = "head to the store";
+        c2Exp.info = "and buy some plants and lights";
+        c2Exp.boughtOrRefunded = (_) => {
+                theory.invalidatePrimaryEquation();
+                updateAvailability();
+        }
     }
     {
         m4Exp = theory.createMilestoneUpgrade(2, 6);
@@ -223,7 +226,7 @@ function d2(C){
 var updateAvailability = () => {
     c2Exp.isAvailable = c1Exp.level >= 0;
     m4Exp.isAvailable = theory.tau >= BigNumber.from("1e300");
-    m5.isAvailable = m4Exp.level == 6
+    m5.isAvailable = c2Exp.level == 1
 }
 
 var tick = (elapsedTime, multiplier) => {
