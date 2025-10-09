@@ -6,9 +6,9 @@ import { Utils } from "./api/Utils";
 
 var id = "aag";
 var name = "acidic Theory v0.101";
-var description = "v0.10120, aag, plants. just borrowing some code from basic theory i sure hope this works";
+var description = "v0.10121, aag, plants. just borrowing some code from basic theory i sure hope this works";
 var authors = "playsprout, scbose";
-var version = 0.10120;
+var version = 0.10121;
 
 //acid
 var acids=["H2O", "PhOH", "HClO", "H2CO3", "AcOH", "HF", "H3PO4", "H3O+"];
@@ -128,7 +128,7 @@ var init = () => {
         c2Exp.info = "plants can make H+, right???? Unlocks plants and lights";
         c2Exp.boughtOrRefunded = (_) => {
                 theory.invalidatePrimaryEquation();
-                updateAvailability();
+                
         }
     {
         m4Exp = theory.createMilestoneUpgrade(2, 6);
@@ -220,8 +220,8 @@ function d2(C){
 
 var updateAvailability = () => {
     c2Exp.isAvailable = c1Exp.level >= 2;
-    C.isAvailable = c2Exp.level > 0
-    c4.isAvailable = c2Exp.level > 0
+    C.isAvailable = c2Exp.level > 0;
+    c4.isAvailable = c2Exp.level > 0;
     m4Exp.isAvailable = theory.tau >= BigNumber.from("1e300");
     m5.isAvailable = m4Exp.level == 6
 }
@@ -257,7 +257,7 @@ var getPrimaryEquation = () => {
     if (c2Exp.level == 4) result += "^{1.154}";
     if (c2Exp.level == 3) result += "^{1.231}";
     if (c2Exp.level > 0) result += "+(p)(l)(c)";
-    result += ")"
+    result += ")";
     if (theory.tau <= BigNumber.from("1e300"))
         result+="+(\\frac{[H+]K_aK_b}{(10^{-\\text{lg}(14-pOH)})K_w})"
     else {
