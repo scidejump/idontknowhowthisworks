@@ -6,7 +6,7 @@ import { Utils } from "./api/Utils";
 
 var id = "aag";
 var name = "acidic Theory v0.101";
-var description = "v0.10132, aag, changed c4 to fib. just borrowing some code from basic theory i sure hope this works";
+var description = "v0.10131, aag, reverted because apparently this versino didnt go through. just borrowing some code from basic theory i sure hope this works";
 var authors = "playsprout, scbose";
 var version = 0.10115;
 
@@ -291,13 +291,7 @@ var get2DGraphValue = () => currency.value.sign * (BigNumber.ONE + currency.valu
 var getC1 = (level) => Utils.getStepwisePowerSum(level, 3, 5, 0);
 var getC2 = (level) => BigNumber.TWO.pow(level);
 var getC3 = (level) => Utils.getStepwisePowerSum(level, 2, 10, 1);
-var getC4 = (level) => {
-        if (level % 2 == 0) {
-                return (fibA.pow(level) - fibB.pow(level)) / fibSqrt5;
-        }
-        else {
-                return (fibA.pow(level) + fibB.pow(level)) / fibSqrt5;
-        }
+var getC4 = (level) => BigNumber.TWO.pow(level);
 var getC1Exponent = (level) => BigNumber.from(1 + 0.08 * level);
 var getC2Exponent = (level) => BigNumber.from(1 + 0.033 * level);
 var getM4Exponent = (level) => BigNumber.from( ((level + 1) * (level + 2)/2 - 1) * 0.0003);
