@@ -292,7 +292,7 @@ const fibSqrt5 = BigNumber.FIVE.sqrt();
 const fibA = (BigNumber.ONE + fibSqrt5) / BigNumber.TWO;
 const fibB = (fibSqrt5 - BigNumber.ONE) / BigNumber.TWO;
 // thanks prop
-let getC4 = (level) =>
+var getC4 = (level) =>
 {
     if(level % 2 == 0)
         return (fibA.pow(level) - fibB.pow(level)) / fibSqrt5;
