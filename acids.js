@@ -6,7 +6,7 @@ import { Utils } from "./api/Utils";
 
 var id = "aag";
 var name = "acidic Theory v0.101";
-var description = "v0.10121, aag, plants. just borrowing some code from basic theory i sure hope this works";
+var description = "v0.10121, aag, fix2. just borrowing some code from basic theory i sure hope this works";
 var authors = "playsprout, scbose";
 var version = 0.10121;
 
@@ -288,16 +288,11 @@ var get2DGraphValue = () => currency.value.sign * (BigNumber.ONE + currency.valu
 var getC1 = (level) => Utils.getStepwisePowerSum(level, 3, 5, 0);
 var getC2 = (level) => BigNumber.TWO.pow(level);
 var getC3 = (level) => Utils.getStepwisePowerSum(level, 5, 10, 1);
-const fibSqrt5 = BigNumber.FIVE.sqrt();
-const fibA = (BigNumber.ONE + fibSqrt5) / BigNumber.TWO;
-const fibB = (fibSqrt5 - BigNumber.ONE) / BigNumber.TWO;
+var fibSqrt5 = BigNumber.FIVE.sqrt();
+var fibA = (BigNumber.ONE + fibSqrt5) / BigNumber.TWO;
+var fibB = (fibSqrt5 - BigNumber.ONE) / BigNumber.TWO;
 // thanks prop
-var getC4 = (level) =>
-{
-    if(level % 2 == 0)
-        return (fibA.pow(level) - fibB.pow(level)) / fibSqrt5;
-    return (fibA.pow(level) + fibB.pow(level)) / fibSqrt5;
-};
+var getC4 = (level) => BigNumber.TWO.pow(level);
 var getC1Exponent = (level) => BigNumber.from(1 + 0.08 * level);
 var getC2Exponent = (level) => BigNumber.from(1 + 0.033 * level);
 var getM4Exponent = (level) => BigNumber.from( ((level + 1) * (level + 2)/2 - 1) * 0.0003);
