@@ -6,16 +6,16 @@ import { Utils } from "./api/Utils";
 
 var id = "aag";
 var name = "acidic Theory v0.101";
-var description = "v0.10116, aag, balance6. just borrowing some code from basic theory i sure hope this works";
+var description = "v0.10120, aag, plants. just borrowing some code from basic theory i sure hope this works";
 var authors = "playsprout, scbose";
-var version = 0.10116;
+var version = 0.10120;
 
 //acid
 var acids=["H2O", "PhOH", "HClO", "H2CO3", "AcOH", "HF", "H3PO4", "H3O+"];
 var list2=["1e0","1.6e4","3.25e6","4.3e7","1.76e9","7.2e10","7.52e11","1e14"];
 
 var currency;
-var tai, rao, C;
+var tai, rao, C, c4;
 var c1Exp, c2Exp;
 theory.primaryEquationHeight=100;
 //Custom cost (this was a frustration)
@@ -24,7 +24,7 @@ var cost;
 var cat2;
 switch(level) {
         //test values, original: 8, 16, 24, 40, 60, 100, 300, 340, 380, 420, 460, 500, 580
-case 0: {cost=BigNumber.from("7e0");break}
+case 0: {cost=BigNumber.from("1e0");break}
 case 1: {cost=BigNumber.from("1.1e0");break}
 case 2: {cost=BigNumber.from("1.2e0");break}
 case 3: {cost=BigNumber.from("1.3e0");break}
@@ -88,11 +88,18 @@ var init = () => {
         if (1 == 1) {
             let getDesc = (level) => "\\text{why doesnt this work?}{" + level + "}";
             let getInfo = (level) => "\\text{huhhh??}" + getC3(level).toString(0);
-            C = theory.createUpgrade(2, currency, new ExponentialCost(BigNumber.from("1e10"), 8));
+            C = theory.createUpgrade(2, currency, new ExponentialCost(BigNumber.from("1e10"), 1));
             C.getDescription = (_) => Utils.getMath(getDesc(C.level));
             C.getInfo = (amount) => Utils.getMathTo(getInfo(C.level), getInfo(C.level + amount));
         }
-
+    // new mystery upgrade
+    {
+        let getDesc = (level) => "\\text{plants:} F_{" + level + "}";
+        let getInfo = (level) => "\\text{number of plants:}" + getC4(level).toString(0);
+        c4 = theory.createUpgrade(3, currency, new ExponentialCost(BigNumber.from("1e7"), 2));
+        c4.getDescription = (_) => Utils.getMath(getDesc(c4.level));
+        c4.getInfo = (amount) => Utils.getMathTo(getInfo(c4.level), getInfo(c4.level+amount));
+ 
     }
 
     /////////////////////
@@ -116,11 +123,13 @@ var init = () => {
     }
 
     {
-        c2Exp = theory.createMilestoneUpgrade(1, 2);
-        c2Exp.description = Localization.getUpgradeIncCustomExpDesc("tai", "0.033");
-        c2Exp.info = Localization.getUpgradeIncCustomExpInfo("tai", "0.033");
-        c2Exp.boughtOrRefunded = (_) => theory.invalidatePrimaryEquation();
-    }
+        c2Exp = theory.createMilestoneUpgrade(1, 1);
+        c2Exp.description = "head to the store and pick up some plants and lights";
+        c2Exp.info = "plants can make H+, right???? Unlocks plants and lights";
+        c2Exp.boughtOrRefunded = (_) => {
+                theory.invalidatePrimaryEquation();
+                updateAvailability();
+        }
     {
         m4Exp = theory.createMilestoneUpgrade(2, 6);
         m4Exp.description = "Increase Tay Exponent";
@@ -196,8 +205,8 @@ var init = () => {
 }
 
 function d(C){
-    let getDesc2 = (level) => "tay=10^{" + level + "}";
-    let getInfo2 = (level) => "tay=" + getC3(level).toString(0);
+    let getDesc2 = (level) => "\\text{i am not gonna question how C works in BT=10^{" + level + "}";
+    let getInfo2 = (level) => "light=" + getC3(level).toString(0);
     C.getDescription = (_) => Utils.getMath(getDesc2(C.level));
     C.getInfo = (amount) => Utils.getMathTo(getInfo2(C.level), getInfo2(C.level + amount));
 }
@@ -210,7 +219,9 @@ function d2(C){
 }
 
 var updateAvailability = () => {
-    c2Exp.isAvailable = c1Exp.level >= 0;
+    c2Exp.isAvailable = c1Exp.level >= 2;
+    C.isAvailable = c2Exp.level > 0
+    c4.isAvailable = c2Exp.level > 0
     m4Exp.isAvailable = theory.tau >= BigNumber.from("1e300");
     m5.isAvailable = m4Exp.level == 6
 }
@@ -219,7 +230,7 @@ var tick = (elapsedTime, multiplier) => {
     let dt = BigNumber.from(elapsedTime * multiplier);
     let bonus = theory.publicationMultiplier;
     if (m5.level == 0) {
-        currency.value += dt * bonus * getC1(tai.level).pow(getC2Exponent(c2Exp.level)) *
+        currency.value += dt * bonus * getC1(tai.level) *
                                    getC2(rao.level) * getKacid(c1Exp.level) * getC3(C.level).pow(getM4Exponent(m4Exp.level));
     }
     else {
@@ -239,17 +250,14 @@ var tick = (elapsedTime, multiplier) => {
 }
 
 var getPrimaryEquation = () => {
-    let result = "\\dot{\\rho} = k(tai)";
-
-    if (c2Exp.level == 1) result += "^{1.033}";
-    if (c2Exp.level == 2) result += "^{1.066}";
-    if (c2Exp.level == 3) result += "^{1.24}";
+    let result = "\\dot{\\rho} = (k(tai)";
  
     result += "(rao)";
     if (c2Exp.level == 5) result += "^{1.077}";
     if (c2Exp.level == 4) result += "^{1.154}";
     if (c2Exp.level == 3) result += "^{1.231}";
-
+    if (c2Exp.level > 0) result += "+(p)(l)(c)";
+    result += ")"
     if (theory.tau <= BigNumber.from("1e300"))
         result+="+(\\frac{[H+]K_aK_b}{(10^{-\\text{lg}(14-pOH)})K_w})"
     else {
@@ -279,7 +287,17 @@ var get2DGraphValue = () => currency.value.sign * (BigNumber.ONE + currency.valu
 
 var getC1 = (level) => Utils.getStepwisePowerSum(level, 3, 5, 0);
 var getC2 = (level) => BigNumber.TWO.pow(level);
-var getC3 = (level) => Utils.getStepwisePowerSum(level, 2, 10, 1);
+var getC3 = (level) => Utils.getStepwisePowerSum(level, 5, 10, 1);
+const fibSqrt5 = BigNumber.FIVE.sqrt();
+const fibA = (BigNumber.ONE + fibSqrt5) / BigNumber.TWO;
+const fibB = (fibSqrt5 - BigNumber.ONE) / BigNumber.TWO;
+// thanks prop
+let getC4 = (level) =>
+{
+    if(level % 2 == 0)
+        return (fibA.pow(level) - fibB.pow(level)) / fibSqrt5;
+    return (fibA.pow(level) + fibB.pow(level)) / fibSqrt5;
+};
 var getC1Exponent = (level) => BigNumber.from(1 + 0.08 * level);
 var getC2Exponent = (level) => BigNumber.from(1 + 0.033 * level);
 var getM4Exponent = (level) => BigNumber.from( ((level + 1) * (level + 2)/2 - 1) * 0.0003);
