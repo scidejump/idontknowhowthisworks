@@ -6,9 +6,9 @@ import { Utils } from "./api/Utils";
 
 var id = "aag";
 var name = "acidic Theory v0.101";
-var description = "v0.10132, aag, fixB. just borrowing some code from basic theory i sure hope this works";
+var description = "v0.10133, aag, c3. just borrowing some code from basic theory i sure hope this works";
 var authors = "playsprout, scbose";
-var version = 0.10115;
+var version = 0.10133;
 
 //acid
 var acids=["H2O", "PhOH", "HClO", "H2CO3", "AcOH", "HF", "H3PO4", "H3O+"];
@@ -92,7 +92,7 @@ var init = () => {
         if (1 == 1) {
             let getDesc = (level) => "\\text{why doesnt this work?}{" + level + "}";
             let getInfo = (level) => "\\text{huhhh??}" + getC3(level).toString(0);
-            C = theory.createUpgrade(2, currency, new ExponentialCost(BigNumber.from("1e10"), 8));
+            C = theory.createUpgrade(2, currency, new ExponentialCost(BigNumber.from("1e10"), 1));
             C.getDescription = (_) => Utils.getMath(getDesc(C.level));
             C.getInfo = (amount) => Utils.getMathTo(getInfo(C.level), getInfo(C.level + amount));
         }
@@ -290,7 +290,7 @@ var get2DGraphValue = () => currency.value.sign * (BigNumber.ONE + currency.valu
 
 var getC1 = (level) => Utils.getStepwisePowerSum(level, 3, 5, 0);
 var getC2 = (level) => BigNumber.TWO.pow(level);
-var getC3 = (level) => Utils.getStepwisePowerSum(level, 2, 10, 1);
+var getC3 = (level) => Utils.getStepwisePowerSum(level, 5, 10, 1);
 var getC4 = (level) => {
         if (level % 2 == 0)
                 return (fibA.pow(level) - fibB.pow(level)) / fibSqrt5;
