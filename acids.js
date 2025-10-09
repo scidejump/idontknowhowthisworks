@@ -6,7 +6,7 @@ import { Utils } from "./api/Utils";
 
 var id = "aag";
 var name = "acidic Theory v0.101";
-var description = "v0.10115, aag, this should be exactly the same. just borrowing some code from basic theory i sure hope this works";
+var description = "v0.10130, aag, attempt to add c4. just borrowing some code from basic theory i sure hope this works";
 var authors = "playsprout, scbose";
 var version = 0.10115;
 
@@ -15,7 +15,7 @@ var acids=["H2O", "PhOH", "HClO", "H2CO3", "AcOH", "HF", "H3PO4", "H3O+"];
 var list2=["1e0","1.6e4","3.25e6","4.3e7","1.76e9","7.2e10","7.52e11","1e14"];
 
 var currency;
-var tai, rao, C;
+var tai, rao, C, c4;
 var c1Exp, c2Exp;
 theory.primaryEquationHeight=100;
 //Custom cost (this was a frustration)
@@ -94,7 +94,14 @@ var init = () => {
         }
 
     }
-
+    // c4
+        {
+                let getDesc = (level) => "c4=2^{" + level + "}";
+                let getInfo = (level) => "c4=" + getC4(level).toString(0);
+                c4 = theory.createUpgrade(3, currency, new ExponentialCost(BigNumber.from("1e7"), 2));
+                c4.getDescription = (_) => Utils.getMath(getDesc(c4.level));
+                c4.getInfo = (amount) => Utils.getMathTo(getInfo(c4.level), getInfo(c4.level + amount));
+        }
     /////////////////////
     // Permanent Upgrades
     theory.createPublicationUpgrade(0, currency, 1e1);
@@ -280,6 +287,7 @@ var get2DGraphValue = () => currency.value.sign * (BigNumber.ONE + currency.valu
 var getC1 = (level) => Utils.getStepwisePowerSum(level, 3, 5, 0);
 var getC2 = (level) => BigNumber.TWO.pow(level);
 var getC3 = (level) => Utils.getStepwisePowerSum(level, 2, 10, 1);
+var getC4 = (level) => BigNumber.TWO.pow(level);
 var getC1Exponent = (level) => BigNumber.from(1 + 0.08 * level);
 var getC2Exponent = (level) => BigNumber.from(1 + 0.033 * level);
 var getM4Exponent = (level) => BigNumber.from( ((level + 1) * (level + 2)/2 - 1) * 0.0003);
