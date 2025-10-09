@@ -6,16 +6,16 @@ import { Utils } from "./api/Utils";
 
 var id = "aag";
 var name = "acidic Theory v0.101";
-var description = "v0.10121, aag, fix3. just borrowing some code from basic theory i sure hope this works";
+var description = "v0.10115, aag, this should be exactly the same. just borrowing some code from basic theory i sure hope this works";
 var authors = "playsprout, scbose";
-var version = 0.10121;
+var version = 0.10115;
 
 //acid
 var acids=["H2O", "PhOH", "HClO", "H2CO3", "AcOH", "HF", "H3PO4", "H3O+"];
 var list2=["1e0","1.6e4","3.25e6","4.3e7","1.76e9","7.2e10","7.52e11","1e14"];
 
 var currency;
-var tai, rao, C, c4;
+var tai, rao, C;
 var c1Exp, c2Exp;
 theory.primaryEquationHeight=100;
 //Custom cost (this was a frustration)
@@ -88,24 +88,16 @@ var init = () => {
         if (1 == 1) {
             let getDesc = (level) => "\\text{why doesnt this work?}{" + level + "}";
             let getInfo = (level) => "\\text{huhhh??}" + getC3(level).toString(0);
-            C = theory.createUpgrade(2, currency, new ExponentialCost(BigNumber.from("1e10"), 1));
+            C = theory.createUpgrade(2, currency, new ExponentialCost(BigNumber.from("1e10"), 8));
             C.getDescription = (_) => Utils.getMath(getDesc(C.level));
             C.getInfo = (amount) => Utils.getMathTo(getInfo(C.level), getInfo(C.level + amount));
         }
-    }
-    // new mystery upgrade
-    {
-        let getDesc = (level) => "i am literally following the same format={" + level + "}";
-        let getInfo = (level) => "so why isnt this working=" + getC4(level).toString(0);
-        c4 = theory.createUpgrade(3, currency, new ExponentialCost(BigNumber.from("1e7"), 2));
-        c4.getDescription = (_) => Utils.getMath(getDesc(c4.level));
-        c4.getInfo = (amount) => Utils.getMathTo(getInfo(c4.level), getInfo(c4.level+amount));
- 
+
     }
 
     /////////////////////
     // Permanent Upgrades
-    theory.createPublicationUpgrade(0, currency, 1e4);
+    theory.createPublicationUpgrade(0, currency, 1e1);
     theory.createBuyAllUpgrade(1, currency, 1e8);
     theory.createAutoBuyerUpgrade(2, currency, 1e6);
 
@@ -124,12 +116,11 @@ var init = () => {
     }
 
     {
-        c2Exp = theory.createMilestoneUpgrade(1, 1);
-        c2Exp.description = "head to the store and pick up some plants and lights";
-        c2Exp.info = "plants can make H+, right???? Unlocks plants and lights";
-        c2Exp.boughtOrRefunded = (_) => {
-                theory.invalidatePrimaryEquation();
-        }
+        c2Exp = theory.createMilestoneUpgrade(1, 2);
+        c2Exp.description = Localization.getUpgradeIncCustomExpDesc("tai", "0.033");
+        c2Exp.info = Localization.getUpgradeIncCustomExpInfo("tai", "0.033");
+        c2Exp.boughtOrRefunded = (_) => theory.invalidatePrimaryEquation();
+    }
     {
         m4Exp = theory.createMilestoneUpgrade(2, 6);
         m4Exp.description = "Increase Tay Exponent";
@@ -168,7 +159,7 @@ var init = () => {
 
     ///////////////////
     chapter1 = theory.createStoryChapter(0, "An Existential Crisis", "You have had this same dream every day for your life. \nThere's a function, and all you see is c1 and c2, along with a graph. Nothing else.\nAs you reach e1000 rho, however, the function just disappears. You wake up. \nAs you question this, you also wonder: why did I go through all this theorywork to discover such a simple way to solve whether the function you were handed to exists? Why you? Why do you exist? Why do these theories exist? Why does everything exist? Is there ever an answer to existence? \nWhoa. You've gone too far. Besides, how would you have an existential crisis at the ripe age of 82? \nYou think: perhaps I just follow my dreams and make a simple theory with just c1 and c2, as well as exponents. And rho as the currency, as expected. Besides, would it really hurt? You also embellish the theory with a few extra equations that make it more appealing to the scientific community by adding some seemingly random (but mathematically sensible) equations. \nYou name the variables Tai and Rao after your best friends.", () => currency.value == 0);
-    chapter2 = theory.createStoryChapter(1, "Pain", "You see that your theory is progressing so slowly. It's painstaking, doing such slow calculations and watching. You wish it would be quicker and you'd get better tools by publication. But you decide to wait until you can publish and not give up. You need an answer.", () => currency.value > BigNumber.from("1e4"));
+    chapter2 = theory.createStoryChapter(1, "Pain", "You see that your theory is progressing so slowly. It's painstaking, doing such slow calculations and watching. You wish it would be quicker and you'd get better tools by publication. But you decide to wait until you can publish and not give up. You need an answer.", () => currency.value > BigNumber.from("1e5"));
     chapter3 = theory.createStoryChapter(2, "Start of Speed", "Finally, you get to publish your theory. You call it \"The Theory of Simplicity\". \nMost people laugh at you, but others think you're on to something.", () => currency.value > BigNumber.from("1e7"));
     chapter4 = theory.createStoryChapter(3, "More Speed, Please", "You have achieved your first e20 of currency! \nYou celebrate by buying a milestone, making you faster. ", () => currency.value > BigNumber.from("1e20"));
     chapter5 = theory.createStoryChapter(4, "Century", "100. Why 100? Why is this number so special? What if the number system was different? How would it be different? Why does this exist? Why do we exist? Why does life exist? And why is my function so simple? \nThoughts attack your head like hornets, but you push on.", () => currency.value > BigNumber.from("1e100"));
@@ -205,8 +196,8 @@ var init = () => {
 }
 
 function d(C){
-    let getDesc2 = (level) => "\\text{i am not gonna question how C works in BT=10^{" + level + "}";
-    let getInfo2 = (level) => "light=" + getC3(level).toString(0);
+    let getDesc2 = (level) => "tay=10^{" + level + "}";
+    let getInfo2 = (level) => "tay=" + getC3(level).toString(0);
     C.getDescription = (_) => Utils.getMath(getDesc2(C.level));
     C.getInfo = (amount) => Utils.getMathTo(getInfo2(C.level), getInfo2(C.level + amount));
 }
@@ -219,7 +210,7 @@ function d2(C){
 }
 
 var updateAvailability = () => {
-    c2Exp.isAvailable = c1Exp.level >= 2;
+    c2Exp.isAvailable = c1Exp.level >= 0;
     m4Exp.isAvailable = theory.tau >= BigNumber.from("1e300");
     m5.isAvailable = m4Exp.level == 6
 }
@@ -228,7 +219,7 @@ var tick = (elapsedTime, multiplier) => {
     let dt = BigNumber.from(elapsedTime * multiplier);
     let bonus = theory.publicationMultiplier;
     if (m5.level == 0) {
-        currency.value += dt * bonus * getC1(tai.level) *
+        currency.value += dt * bonus * getC1(tai.level).pow(getC2Exponent(c2Exp.level)) *
                                    getC2(rao.level) * getKacid(c1Exp.level) * getC3(C.level).pow(getM4Exponent(m4Exp.level));
     }
     else {
@@ -248,13 +239,17 @@ var tick = (elapsedTime, multiplier) => {
 }
 
 var getPrimaryEquation = () => {
-    let result = "\\dot{\\rho} = (k(tai)";
+    let result = "\\dot{\\rho} = k(tai)";
+
+    if (c2Exp.level == 1) result += "^{1.033}";
+    if (c2Exp.level == 2) result += "^{1.066}";
+    if (c2Exp.level == 3) result += "^{1.24}";
  
     result += "(rao)";
     if (c2Exp.level == 5) result += "^{1.077}";
     if (c2Exp.level == 4) result += "^{1.154}";
     if (c2Exp.level == 3) result += "^{1.231}";
-    result += ")";
+
     if (theory.tau <= BigNumber.from("1e300"))
         result+="+(\\frac{[H+]K_aK_b}{(10^{-\\text{lg}(14-pOH)})K_w})"
     else {
@@ -284,8 +279,7 @@ var get2DGraphValue = () => currency.value.sign * (BigNumber.ONE + currency.valu
 
 var getC1 = (level) => Utils.getStepwisePowerSum(level, 3, 5, 0);
 var getC2 = (level) => BigNumber.TWO.pow(level);
-var getC3 = (level) => Utils.getStepwisePowerSum(level, 5, 10, 1);
-var getC4 = (level) => BigNumber.TWO.pow(level);
+var getC3 = (level) => Utils.getStepwisePowerSum(level, 2, 10, 1);
 var getC1Exponent = (level) => BigNumber.from(1 + 0.08 * level);
 var getC2Exponent = (level) => BigNumber.from(1 + 0.033 * level);
 var getM4Exponent = (level) => BigNumber.from( ((level + 1) * (level + 2)/2 - 1) * 0.0003);
