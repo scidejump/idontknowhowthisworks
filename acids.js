@@ -6,9 +6,9 @@ import { Utils } from "./api/Utils";
 
 var id = "aag";
 var name = "acidic Theory v0.101";
-var description = "v0.10134, aag, c2exp2. just borrowing some code from basic theory i sure hope this works";
+var description = "v0.10135, aag, unknown. just borrowing some code from basic theory i sure hope this works";
 var authors = "playsprout, scbose";
-var version = 0.10134;
+var version = 0.10135;
 
 //acid
 var acids=["H2O", "PhOH", "HClO", "H2CO3", "AcOH", "HF", "H3PO4", "H3O+"];
@@ -234,13 +234,13 @@ var updateAvailability = () => {
 var tick = (elapsedTime, multiplier) => {
     let dt = BigNumber.from(elapsedTime * multiplier);
     let bonus = theory.publicationMultiplier;
-    if (m5.level == 0) {
+    if (c2Exp.level == 0) {
         currency.value += dt * bonus * getC1(tai.level) *
                                    getC2(rao.level) * getKacid(c1Exp.level) * getC3(C.level).pow(getM4Exponent(m4Exp.level));
     }
     else {
-        currency.value += dt * bonus * getC1(tai.level).pow(getC1Exponent(c1Exp.level)) *
-            getC2(rao.level).pow(getC2Exponent(c2Exp.level)) * getC3(C.level).pow(0.015);
+        currency.value += dt * bonus * (getC1(tai.level) *
+            getC2(rao.level) * getKacid(c1Exp.level) + getC3(C.level) * getC4(c4.level));
         
     }
 
